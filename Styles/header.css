@@ -61,7 +61,9 @@
   margin: 0 10px 0 -1px;
 }
 
-.search-button, .voice-search-button {
+.search-button, .voice-search-button,
+.upload-container, .youtube-apps-container,
+.notifications-icon-container  {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -74,7 +76,10 @@
 }
 
 .search-button .tooltip,
-.voice-search-button .tooltip {
+.voice-search-button .tooltip,
+.upload-container .tooltip,
+.youtube-apps-container .tooltip,
+.notifications-icon-container .tooltip {
   position: absolute;
   color: white;
   background-color: gray;
@@ -86,10 +91,14 @@
   transition: opacity 0.15s;
   pointer-events: none;
   white-space: nowrap;
+  font-family: "Roboto", serif;
 }
 
 .search-button:hover .tooltip,
-.voice-search-button:hover .tooltip {
+.voice-search-button:hover .tooltip,
+.upload-container:hover .tooltip,
+.youtube-apps-container:hover .tooltip,
+.notifications-icon-container:hover .tooltip {
   opacity: 1;
 }
 
