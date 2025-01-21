@@ -90,6 +90,27 @@
   height: 24px;
 }
 
+.notifications-icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.notifications-count {
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  background-color: rgb(204, 0, 0);
+  color: white;
+  font-family: "Roboto", serif;
+  font-size: 10px;
+  padding: 1.5px 5px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .current-user-picture {
   height: 32px;
   border-radius: 50%;
