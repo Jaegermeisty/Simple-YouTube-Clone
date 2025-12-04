@@ -1,97 +1,231 @@
+/* Futuristic Header - Glass-morphism Design */
+
 .header, .left-section, .middle-section, .right-section {
   display: flex;
 }
 
 .header {
-  height: 55px;
+  height: 75px;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
-  background-color: white;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-bottom: 1px solid rgb(228, 228, 228);
+  top: 20px;
+  left: 20px;
+  right: 20px;
   z-index: 100;
+  padding: 0 30px;
+
+  /* Glass-morphism effect */
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  box-shadow: var(--shadow-elevated),
+              inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+  transition: all 0.3s ease;
+}
+
+.header:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-elevated),
+              0 0 40px rgba(0, 240, 255, 0.2),
+              inset 0 0 30px rgba(255, 255, 255, 0.08);
 }
 
 .left-section {
   align-items: center;
+  gap: 24px;
 }
 
 .hamburger-menu {
-  height: 24px;
-  margin: 0 24px;
+  height: 26px;
+  cursor: pointer;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.hamburger-menu:hover {
+  background: rgba(0, 240, 255, 0.1);
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--accent-cyan));
+  transform: scale(1.1);
 }
 
 .youtube-logo {
-  height: 20px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
+.youtube-logo:hover {
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px var(--accent-magenta));
+  transform: scale(1.05);
+}
+
+/* Middle Section - Futuristic Search */
 .middle-section {
   flex: 1;
-  margin: 0 35px 0 70px;
-  max-width: 500px;
+  margin: 0 60px;
+  max-width: 600px;
   align-items: center;
+  gap: 12px;
 }
 
 .search-bar {
   flex: 1;
-  height: 36px;
-  padding-left: 10px;
+  height: 48px;
+  padding: 0 20px;
   font-size: 16px;
-  border: 1px solid rgb(192, 192, 192);
-  border-radius: 2px;
-  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
-  width: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 24px;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .search-bar::placeholder {
-  font-family: "Roboto", serif;
-  font-size: 16px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.search-bar:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4),
+              inset 0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 .search-button {
-  width: 66px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(240, 240, 240);
-  border: 1px solid rgb(192, 192, 192);
-  margin: 0 10px 0 -1px;
+  background: var(--gradient-accent);
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+  position: relative;
 }
 
-.search-button, .voice-search-button,
-.upload-container, .youtube-apps-container,
-.notifications-icon-container  {
+.search-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.5);
+}
+
+.search-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.search-icon {
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+/* Voice Search Button */
+.voice-search-button {
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  background: rgba(139, 92, 246, 0.1);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.voice-search-button:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  transform: scale(1.1);
+}
+
+.voice-search-icon {
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+/* Right Section - Modern Icons */
+.right-section {
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.upload-container,
+.youtube-apps-container,
+.notifications-icon-container {
   position: relative;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.search-icon {
-  height: 25px; 
+.upload-container:hover,
+.youtube-apps-container:hover,
+.notifications-icon-container:hover {
+  background: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  transform: translateY(-2px);
 }
 
+.upload-icon,
+.youtube-apps-icon,
+.notifications-icon {
+  height: 22px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.upload-container:hover .upload-icon,
+.youtube-apps-container:hover .youtube-apps-icon,
+.notifications-icon-container:hover .notifications-icon {
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px var(--accent-cyan));
+}
+
+/* Tooltips - Futuristic Style */
 .search-button .tooltip,
 .voice-search-button .tooltip,
 .upload-container .tooltip,
 .youtube-apps-container .tooltip,
 .notifications-icon-container .tooltip {
   position: absolute;
-  color: white;
-  background-color: gray;
-  padding: 4px 8px;
-  border-radius: 2px;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 8px 14px;
+  border-radius: 10px;
   font-size: 12px;
-  bottom: -30px;
+  bottom: -45px;
   opacity: 0;
-  transition: opacity 0.15s;
+  transition: all 0.3s ease;
   pointer-events: none;
   white-space: nowrap;
-  font-family: "Roboto", serif;
+  font-family: inherit;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .search-button:hover .tooltip,
@@ -100,55 +234,88 @@
 .youtube-apps-container:hover .tooltip,
 .notifications-icon-container:hover .tooltip {
   opacity: 1;
+  transform: translateY(-5px);
 }
 
-
-.voice-search-button {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgb(245, 245, 245);
-}
-
-.voice-search-icon {
-  height: 24px;
-}
-
-.right-section {
-  width: 180px;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 22px;
-  flex-shrink: 0;
-}
-
-.upload-icon, .youtube-apps-icon, .notifications-icon {
-  height: 24px;
-}
-
+/* Notifications Badge */
 .notifications-icon-container {
   position: relative;
-  display: flex;
-  justify-content: center;
 }
 
 .notifications-count {
   position: absolute;
-  top: -2px;
-  right: -5px;
-  background-color: rgb(204, 0, 0);
+  top: 2px;
+  right: 2px;
+  background: var(--gradient-accent);
   color: white;
-  font-family: "Roboto", serif;
+  font-family: inherit;
   font-size: 10px;
-  padding: 1.5px 5px;
-  border-radius: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 18px;
+  box-shadow: 0 0 15px rgba(255, 0, 234, 0.6);
+  animation: pulse 2s ease-in-out infinite;
 }
 
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 0, 234, 0.6);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 234, 0.8);
+  }
+}
+
+/* User Profile Picture */
 .current-user-picture {
-  height: 32px;
-  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  border-radius: 22px;
+  border: 2px solid transparent;
+  background: var(--gradient-accent);
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+}
+
+.current-user-picture:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .header {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 0 20px;
+  }
+
+  .middle-section {
+    margin: 0 30px;
+    max-width: 400px;
+  }
+
+  .right-section {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 650px) {
+  .middle-section {
+    margin: 0 20px;
+  }
+
+  .voice-search-button {
+    display: none;
+  }
 }
